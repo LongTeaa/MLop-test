@@ -3,21 +3,13 @@ name: Pipeline Build và Test Model
 on:
   push:
     branches: [ main, master ]
-    paths:
-      - 'lab3/**'
   pull_request:
     branches: [ main, master ]
-    paths:
-      - 'lab3/**'
 
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
     
-    defaults:
-      run:
-        working-directory: lab3
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -44,5 +36,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: trained-model
-        path: lab3/models/model.pkl
+        path: models/model.pkl
         retention-days: 7
